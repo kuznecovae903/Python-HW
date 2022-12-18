@@ -5,9 +5,9 @@ import re
 import itertools
 
 
-file1 = '33_Polynomial.txt'
-file2 = '33_Polynomial2.txt'
-file_sum = '34_Sum_polynomials.txt'
+file1 = '4_Polynomial.txt'
+file2 = '4_Polynomial2.txt'
+file_sum = '4_Sum_polynomials.txt'
 
 # Получение данных из файла
 
@@ -20,7 +20,7 @@ def read_pol(file):
 
 def convert_pol(pol):
     pol = pol.replace('= 0', '')
-    pol = re.sub("[*|^| ]", " ", pol).split('+')
+    pol = re.sub("[*|**| ]", " ", pol).split('+')
     pol = [char.split(' ') for char in pol]
     pol = [[x for x in list if x] for list in pol]
     for i in pol:
@@ -43,7 +43,7 @@ def fold_pols(pol1, pol2):
 # Составление итогового многочлена
 
 def get_sum_pol(pol):
-    var = ['*x^'] * len(pol)
+    var = ['*x**'] * len(pol)
     coefs = [x[0] for x in pol]
     degrees = [x[1] for x in pol]
     new_pol = [[str(a), str(b), str(c)] for a, b, c in (zip(coefs, var, degrees))]
