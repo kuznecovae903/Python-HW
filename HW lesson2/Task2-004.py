@@ -1,5 +1,3 @@
-# Реализуйте алгоритм перемешивания списка. Встроенный алгоритм SHUFFLE не использовать!
-# Реализовать свой метод
 # ДОПОЛНИТЕЛЬНО, НО НЕОБЯЗАТЕЛЬНО:
 # Написать программу, которая состоит 4 из этапов:
 # - создает список из рандомных четырех значных чисел
@@ -21,20 +19,24 @@
 # Введите подстроку: ам
 # Python - один из популярных языков в мире
 
-from random import randrange
-
-num = int(input('Введите количество элементов списка: '))
-
-ls_1 = list(range(num))
-#print(ls_1) оригинал
-ls_2 = ls_1.copy()
-#print(ls_2) копия оригинала
-
-for i in range(0, num):
-    num_1 = randrange(num)
-    num_2 = randrange(num)
-    num_3 = randrange(num)
-    ls_2[num_1], ls_2[num_2], ls_2[num_3] = ls_2[num_3], ls_2[num_2], ls_2[num_1]
-
-print(ls_1) #оригинал
-print(ls_2) #перемешанный
+import random
+def mix_list(list_original):
+    # Создаем копию, поскольку мы не должны изменять оригинал
+    list = list_original[:]
+    # Цикл от 0 до длины списка -1
+    list_length = len(list)
+    for i in range(list_length):
+        # Получение случайного индекса
+        index_aleatory = random.randint(0, list_length - 1)
+        # Замена
+        temp = list[i]
+        list[i] = list[index_aleatory]
+        list[index_aleatory] = temp
+    # Возвращаем список
+    return list
+list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+mixed_list = mix_list(list)
+print("Исходный список: ")
+print(list)
+print("Перемешанный список: ")
+print(mixed_list)
