@@ -2,7 +2,7 @@
 
 print('*'*100)
 print('\n')
-print('Давайте сыграем в крестики нолики!')
+print('Давайте сыграем в крестики-нолики!')
 
 board = list(range(1,10))
 
@@ -24,7 +24,7 @@ def choice(tic_tac):
             print('Вы ввели некорректный номер ячейки')
             continue
         if player_index >= 1 and player_index <= 9:
-            if(str(board[player_index-1]) not in 'XO'):
+            if(str(board[player_index-1]) not in '0X'):
                 board[player_index-1] = tic_tac
                 valid = True
             else:
@@ -42,7 +42,7 @@ def victory_check(board):
     return False
 
 def game(board):
-    counter =0
+    counter = 0
     vic = False
     while not vic:
         design_board(board)
